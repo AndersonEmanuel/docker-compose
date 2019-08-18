@@ -1,1 +1,2 @@
 /mariadb/containers/mariadb/data/*
+/mongodb/containers/mongodb/data/*
