@@ -1,0 +1,15 @@
+version: '3'
+services:
+    mariadb:
+        image: 'mariadb:10.1.41'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_DATABASE: database
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+            MYSQL_ROOT_PASSWORD: root
+        command: mysqld --innodb-flush-method=littlesync --innodb-use-native-aio=OFF --log_bin=ON
+        volumes:
+          - ./containers/mariadb/data:/var/lib/mysql
+          - ./containers/mariadb/config/innodb-fix.cnf:/etc/mysql/conf.d/innodb-fix.cnf
